@@ -1,0 +1,1 @@
+print(sum(len(set(p) - set("\n")) for p in open("inputa.txt").read().split("\n\n")))
