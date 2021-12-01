@@ -2,8 +2,6 @@ seats = open("inputa.txt").readlines()
 width = len(seats[0]) - 1
 height= len(seats)
 
-print(width, height)
-
 neighbors = [
     (0, -1),
     (0, 1),

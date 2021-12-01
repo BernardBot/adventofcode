@@ -2,8 +2,6 @@ seats = open("inputa.txt").readlines()
 width = len(seats[0]) - 1
 height= len(seats)
 
-print(width, height)
-
 neighbors = [
     (0, -1),
     (0, 1),
@@ -22,10 +20,6 @@ def update_seat(x, y, seats):
     for i, j in neighbors:
         if x + i < 0 or y + j < 0 or x + i >= height or y + j >= width:
             continue
-        # print(x + i, y + j)
-        # print(len(seats), len(seats[0]))
-        # print(len(seats[x + i]))
-        # print(seats[x + i])
         c += seats[x + i][y + j] == "#"
     
     if seat == "L" and c == 0:
