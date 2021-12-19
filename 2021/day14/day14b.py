@@ -13,7 +13,7 @@ for i in range(len(template) - 1):
     states[sub] += 1
 
 elements = set("".join(rules))
-overlap = { element : 0 for element in elements }
+count_dict = { element : 0 for element in elements }
 
 n = 40
 
@@ -24,24 +24,13 @@ for j in range(n):
         r = rules[state][1]
         new_states[r] += count
         new_states[l] += count
-        overlap[l[1]] += count
+        count_dict[l[1]] -= count
     states = new_states
-
-count_dict = {}
 
 for state, count in states.items():
     l, r = state
-    if l in count_dict:
-        count_dict[l] += count
-    else:
-        count_dict[l] = count
-    if r in count_dict:
-        count_dict[r] += count
-    else:
-        count_dict[r] = count
-
-for element, count in overlap.items():
-    count_dict[element] -= count
+    count_dict[l] += count
+    count_dict[r] += count
 
 max_key = max(count_dict, key=count_dict.get)
 min_key = min(count_dict, key=count_dict.get)
